@@ -1,6 +1,4 @@
-
-
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Label, Textarea, TextInput } from "flowbite-react";
 
 const UploadBook = () => {
@@ -47,8 +45,10 @@ const UploadBook = () => {
     };
     console.log(bookObj);
 
+
+   // const backendUrl = import.meta.env.VITE_BACKEND_URL
     // send data to db
-    fetch("https://book-store-3bg5.onrender.com/all-books/upload-book", {
+    fetch(`http://localhost:8080/upload-book`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

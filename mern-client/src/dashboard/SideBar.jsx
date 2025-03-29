@@ -1,9 +1,18 @@
 import { Sidebar } from "flowbite-react";
 import { BiBuoy } from "react-icons/bi";
-import { HiArrowSmRight, HiChartPie, HiInbox, HiOutlineCloudUpload, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
-import userImage from "../assets/profile.jpg"; 
+import {
+  HiArrowSmRight,
+  HiChartPie,
+  HiInbox,
+  HiOutlineCloudUpload,
+  HiShoppingBag,
+  HiTable,
+  HiUser,
+  HiViewBoards,
+} from "react-icons/hi";
+import userImage from "../assets/profile.jpg";
 import { useContext } from "react";
-import { AuthContext } from "../contects/AuthProvider"; 
+import { AuthContext } from "../contects/AuthProvider";
 
 const SideBar = () => {
   const { user } = useContext(AuthContext);
@@ -26,7 +35,10 @@ const SideBar = () => {
           <Sidebar.Item href="/admin/dashboard" icon={HiChartPie}>
             <p>Dashboard</p>
           </Sidebar.Item>
-          <Sidebar.Item href="/admin/dashboard/upload" icon={HiOutlineCloudUpload}>
+          <Sidebar.Item
+            href="/admin/dashboard/upload"
+            icon={HiOutlineCloudUpload}
+          >
             <p>Upload Book</p>
           </Sidebar.Item>
           <Sidebar.Item href="/admin/dashboard/manage" icon={HiInbox}>
@@ -59,6 +71,6 @@ const SideBar = () => {
       </Sidebar.Items>
     </Sidebar>
   );
-}
+};
 
 export default SideBar;

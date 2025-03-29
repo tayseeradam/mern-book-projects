@@ -4,6 +4,8 @@ const port = process.env.port || 8080
 const cors = require('cors')
 
 
+
+
 //middleware
 app.use(express.json());
 app.use(cors());
@@ -17,7 +19,10 @@ app.get('/', (req, res) => {
 //mongodb configuration
 
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const { config } = require('dotenv')
 const uri = "mongodb+srv://mern-book-store:Sstt1996@cluster0.5iy9b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+//const uri = "mongodb+srv://mern-book-store:Sstt1996@cluster0.5iy9b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -46,12 +51,12 @@ async function run() {
 
     });
 
-    //  //get all books from the db
-    //  app.get('/all-books', async(req,res)=>{
-    //      const books =  bookCollections.find();
-    //      const result = await books.toArray();
-    //      res.send(result);
-    // });
+      //get all books from the db
+      app.get('/all-books', async(req,res)=>{
+          const books =  bookCollections.find();
+          const result = await books.toArray();
+          res.send(result);
+     });
 
     // updata a book data:patch or updata methods
     app.patch('/book/:id', async(req, res) => {
@@ -115,4 +120,7 @@ run().catch(console.dir);
 app.listen(port, ()=>{
     console.log(`Example app listening on port${port}`)
 });
+
+
+
 

@@ -18,6 +18,10 @@ import Login from "../components/Login";
 import PrivateRout from "../privateRoute/PrivateRout";
 import Logout from "../components/Logout";
 import ErrorPage from "../components/ErrorPage";
+import Cart from "../components/Cart";
+
+
+//const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 const router = createBrowserRouter([
   {
@@ -41,11 +45,15 @@ const router = createBrowserRouter([
         path: "/blog",
         element: <Blog/>
       },
+      {
+         path:"/cart",
+        element: <Cart />
+       },
 
       {
         path: "/blog/:postId",
         loader: ({ params }) =>
-          fetch(`http://localhost:8080/book/${params.postId}`)
+          fetch(`http://localhost:8080/${params.postId}`)
             .then((res) => {
               if (!res.ok) {
                 throw new Error("Network response was not ok");
@@ -117,3 +125,7 @@ const router = createBrowserRouter([
 ]);
 
 export default router;
+
+
+
+

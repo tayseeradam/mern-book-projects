@@ -1,31 +1,12 @@
-// import React, { useEffect, useState } from 'react'
-// import BookCards from '../components/BookCards'
-
-// const OtherBooks = () => {  
-//     const [books, setBooks] = useState([])
-
-//     useEffect(() => {
-//         fetch("https://setu-mern-server.onrender.com").then(res => res.json()).then(data => 
-//             setBooks(data.slice(0, 8)))
-//     }, [])
-//   return (
-//     <div>
-//       <BookCards books={books} headline="Other Books"/>
-//     </div>
-//   )
-// }
-
-// export default OtherBooks
-
-
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import BookCards from '../components/BookCards';
 
 const OtherBooks = () => {  
     const [books, setBooks] = useState([]);
 
+   // const backendUrl = import.meta.env.VITE_BACKEND_URL
     useEffect(() => {
-        fetch("http://localhost:8080/all-books")
+        fetch(`http://localhost:8080/all-books`)
             .then(res => {
                 if (!res.ok) {
                     throw new Error('Network response was not ok');

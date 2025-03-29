@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import BookCards from "../components/BookCards";
 
 const BestSellerBooks = () => {
     const [books, setBooks] = useState([]);
 
+   // const backendUrl = import.meta.env.VITE_BACKEND_URL
     useEffect(() => {
         fetch("http://localhost:8080/all-books")
+        //https://mern-books.vercel.app
+      //  fetch("http://localhost:8080/all-books")
             .then(res => {
                 if (!res.ok) {
                     throw new Error('Network response was not ok');

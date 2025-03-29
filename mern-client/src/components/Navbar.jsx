@@ -1,16 +1,20 @@
-
 import { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 // React icons
 import { FaBarsStaggered, FaBlog, FaXmark } from "react-icons/fa6";
 import { AuthContext } from '../contects/AuthProvider';
+import { BsFillCartPlusFill } from "react-icons/bs";
 
 const Navbar = () => {
+    const location = useLocation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
+    const [cartInfo, setCartInfo] = useState(()=>{ 
+        const storedCart =localStorage.getItem('count')
+        return storedCart ? Number(storedCart) : 0;
+    });
     const { user } = useContext(AuthContext);
-    console.log(user);
 
     // Toggle menu
     const toggleMenu = () => {
@@ -31,10 +35,11 @@ const Navbar = () => {
     // Nav items
     const navItems = [
         { link: "Home", path: "/" },
-        { link: "About", path: "/about" },
-        { link: "Blog", path: "/blog" },
         { link: "Shop", path: "/shop" },
+        { link: "Blog", path: "/blog" },
+        { link: "About", path: "/about" },
         { link: "Sell Your Book", path: "/admin/dashboard" },
+
     ];
 
     return (
@@ -42,37 +47,46 @@ const Navbar = () => {
             <nav className={`py-4 lg:px-24 px-4 ${isSticky ? "sticky top-0 left-0 right-0 bg-sky-700" : ""}`}>
                 <div className='flex justify-between items-center text-base gap-8'>
                     {/* Logo */}
-                    <Link to='/' className='text-2xl font-bold text-white  flex items-center gap-2 hover:text-sky-500'>
-                        <FaBlog className='inline-block ' /> Books
+                    <Link to='/' className='text-2xl font-bold text-blue-700 hover:text-white flex items-center gap-2'>
+                        <FaBlog className='inline-block' /> <span className='text-sky-500  hover:text-white font-extrabold'>
+                            Book<span className='text-base'>Store</span></span>
                     </Link>
 
                     {/* Nav items for large devices */}
-                    <ul className='md:flex space-x-12 hidden'>
+                    <ul className='md:flex space-x-3 hidden bg-sky-200/50 px-3 py-1.5 rounded-full'>
                         {navItems.map(({ link, path }) => (
-                            <Link key={path} to={path} className='block text-base text-white uppercase cursor-pointer hover:text-blue-300'>
+                            <Link key={path} to={path} className={`block text-base uppercase cursor-pointer hover:bg-gray-200 items-center py-1.5 px-3 rounded-full duration-300 font-semibold ${location.pathname === path ? 'bg-gray-300 text-sky-500' : 'text-gray-800'}`}>
                                 {link}
                             </Link>
                         ))}
+
                     </ul>
+                    
 
                     {/* Button for large devices */}
-                    <div className='space-x-12 hidden lg:flex items-center'>
-                        <button><FaBarsStaggered className='w-5 hover:text-blue-400 font-serif' /></button>
-                       
+                    <div className='space-x-8 hidden lg:flex items-center'>
+                    <Link  to= {'/cart'}>
+                         <div className='relative '><BsFillCartPlusFill size={25} className='text-gray-800/80 hover:text-white'/> 
+                        <span className='absolute w-5 h-5 p-0.5 rounded-full bg-sky-500 text-white text-sm  -top-4 -right-4'>{cartInfo}</span></div>
+                        
+                        </Link>
+
+
+                        <button><FaBarsStaggered className='w-5 hover:text-blue-700 hover:text-white'/></button>
                     </div>
 
                     {/* Menu button for mobile devices */}
                     <div className='md:hidden'>
-                        <button onClick={toggleMenu} className='text-black focus:outline-none font-serif'>
-                            {isMenuOpen ? <FaXmark className='h-5 w-5 text-black' /> : <FaBarsStaggered className='h-5 w-5 text-black' />}
+                        <button onClick={toggleMenu} className='text-black focus:outline-none'>
+                            {isMenuOpen ? <FaXmark className='h-5 w-5 text-black ' /> : <FaBarsStaggered className='h-5 w-5 text-black' />}
                         </button>
                     </div>
                 </div>
 
                 {/* Nav items for small devices */}
-                <div className={`space-y-4 px-4 mt-16 py-7 bg-sky-500 ${isMenuOpen ? "block fixed top-0 right-0 left-0" : "hidden"}`}>
+                <div className={`space-y-4 px-4 mt-16 py-7 bg-rose-700 ${isMenuOpen ? "block fixed top-0 right-0 left-0" : "hidden"}`}>
                     {navItems.map(({ link, path }) => (
-                        <Link key={path} to={path} className='block text-base text-white uppercase cursor-pointer'>
+                        <Link key={path} to={path} className={`block text-base uppercase cursor-pointer ${location.pathname === path ? 'text-yellow-300' : 'text-white'}`}>
                             {link}
                         </Link>
                     ))}

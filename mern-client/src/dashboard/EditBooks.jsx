@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { Button, Label, Textarea, TextInput } from "flowbite-react";
 
@@ -34,8 +34,12 @@ const EditBooks = () => {
 
     const updateBookObj = { bookTitle, authorName, URL, category, bookDescription, bookPDF };
 
+      //const backendUrl = import.meta.env.VITE_BACKEND_URL
+
+
+      //https://mern-books.vercel.app
     // Update the book data
-    fetch(`https://book-store-3bg5.onrender.com/book/${id}`, {  // Updated URL
+    fetch(`http://localhost:8080/book/${id}`, {  // Updated URL
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
