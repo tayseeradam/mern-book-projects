@@ -19,11 +19,11 @@ const BannerCard = () => {
         modules={[EffectCards]}
         className="mySwiper"
         >
-            <SwiperSlide>https://www.goodreads.com/book/show/58891551-young-mungo</SwiperSlide>
-            <SwiperSlide>https://www.goodreads.com/book/show/59575939-an-immense-world</SwiperSlide>
-            <SwiperSlide>https://www.goodreads.com/book/show/59366244-i-m-glad-my-mom-died</SwiperSlide>
-            <SwiperSlide>https://www.goodreads.com/book/show/59366244-i-m-glad-my-mom-died</SwiperSlide>
-            <SwiperSlide>https://www.goodreads.com/book/show/58733693-remarkably-bright-creatures</SwiperSlide>
+            <SwiperSlide><img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1637602267i/58891551.jpg" alt="" /></SwiperSlide>
+            <SwiperSlide>https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1652105350i/59575939.jpg</SwiperSlide>
+            <SwiperSlide>https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1639230960i/58231065.jpg</SwiperSlide>
+            <SwiperSlide>hhttps://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1649228846i/59366244.jpg</SwiperSlide>
+            <SwiperSlide>https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1651600548i/58733693.jpg</SwiperSlide>
         </Swiper>
     </div>
   )
