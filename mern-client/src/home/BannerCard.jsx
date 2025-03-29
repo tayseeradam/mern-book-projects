@@ -19,11 +19,11 @@ const BannerCard = () => {
         modules={[EffectCards]}
         className="mySwiper"
         >
-            <SwiperSlide>Slide 1</SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
-            <SwiperSlide>Slide 5</SwiperSlide>
+            <SwiperSlide>https://www.goodreads.com/book/show/58891551-young-mungo</SwiperSlide>
+            <SwiperSlide>https://www.goodreads.com/book/show/59575939-an-immense-world</SwiperSlide>
+            <SwiperSlide>https://www.goodreads.com/book/show/59366244-i-m-glad-my-mom-died</SwiperSlide>
+            <SwiperSlide>https://www.goodreads.com/book/show/59366244-i-m-glad-my-mom-died</SwiperSlide>
+            <SwiperSlide>https://www.goodreads.com/book/show/58733693-remarkably-bright-creatures</SwiperSlide>
         </Swiper>
     </div>
   )
